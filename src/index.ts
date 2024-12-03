@@ -80,31 +80,31 @@ basekit.addField({
   ],
   // 定义捷径的返回结果类型
   resultType: {
-    type: FieldType.DateTime,
-    extra: {
-      formatter: DateFormatter.DATE_YMD_WITH_HYPHEN,
-    }
-    // type: FieldType.Object,
+    // type: FieldType.DateTime,
     // extra: {
-    //   icon: {
-    //     light: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/eqgeh7upeubqnulog/chatbot.svg',
-    //   },
-    //   properties: [
-    //     {
-    //       key: 'id',
-    //       isGroupByKey: true,
-    //       type: FieldType.Text,
-    //       title: 'id',
-    //       hidden: true,
-    //     },
-    //     {
-    //       key: 'result',
-    //       type: FieldType.Text,
-    //       title: t('result'),
-    //       primary: true,
-    //     }
-    //   ],
-    // },
+    //   formatter: DateFormatter.DATE_YMD_WITH_HYPHEN,
+    // }
+    type: FieldType.Object,
+    extra: {
+      icon: {
+        light: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/abjayvoz/ljhwZthlaukjlkulzlp/2024H2/gongzuoritianshu.png?x-resource-account=public',
+      },
+      properties: [
+        {
+          key: 'id',
+          isGroupByKey: true,
+          type: FieldType.Text,
+          title: 'id',
+          hidden: true,
+        },
+        {
+          key: 'result',
+          type: FieldType.Text,
+          title: t('result'),
+          primary: true,
+        }
+      ],
+    },
   },
   // formItemParams 为运行时传入的字段参数，对应字段配置里的 formItems （如引用的依赖字段）
   execute: async (formItemParams: { date: number, count: number, plusOrSubtract: { value: boolean } }, context) => {
@@ -127,7 +127,11 @@ basekit.addField({
 
       return {
         code: FieldCode.Success,
-        data: result,
+        // data: result,
+        data: {
+          id: `${Math.random()}`,
+          result,
+        }
       }
     } catch (e) {
       return {
